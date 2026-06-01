@@ -1,0 +1,564 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: #0f172a;
+      color: #fff;
+    }
+    .navbar .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .animated-name {
+      color: #7dd3fc;
+      position: relative;
+      display: inline-block;
+    }
+    .animated-name::after {
+      content: '|';
+      display: inline-block;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    .navbar nav a {
+      color: #e2f0e9;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 0.95rem;
+    }
+    .navbar nav a:hover {
+      color: #7dd3fc;
+    }
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      margin: 0 0 16px;
+      line-height: 1.1;
+    }
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      color: #475569;
+      line-height: 1.7;
+    }
+    .overview {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 24px;
+    }
+    .overview h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: #0f172a;
+    }
+    .overview p {
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .gallery {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      padding: 24px 16px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+    .gallery-item .lock-icon {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+    .gallery-item .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .gallery-item .card-text {
+      margin-top: 8px;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+    .card-form {
+      width: 100%;
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+    }
+    .card-form input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .card-form button {
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .card-form .unlock-button {
+      background: #0f172a;
+      color: #fff;
+    }
+    .card-form .cancel-button {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .card-form .password-message {
+      margin: 0;
+      color: #b91c1c;
+      min-height: 1.2rem;
+      font-size: 0.95rem;
+    }
+    .btn-panel {
+      max-width: 1100px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-panel button {
+      padding: 10px 20px;
+      background: #0f172a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.25s ease;
+    }
+    .btn-panel button:hover {
+      background: #1e293b;
+    }
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 24px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* Education password modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.76);
+      padding: 20px;
+      z-index: 9999;
+    }
+    .modal-overlay.hidden { display: none; }
+    .password-modal {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22);
+    }
+    .password-modal h2 { margin: 0 0 12px; font-size: 1.3rem; color: #0f172a; }
+    .password-modal p { margin: 0 0 18px; color: #475569; line-height: 1.5; }
+    .password-modal input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .password-modal .modal-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .password-modal button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .password-modal .unlock {
+      background: #0f172a;
+      color: #fff;
+    }
+    .password-modal .cancel {
+      background: #e5e7eb;
+      color: #0f172a;
+    }
+    .password-modal .password-error {
+      margin: 0;
+      min-height: 1.2rem;
+      color: #b91c1c;
+      font-size: 0.95rem;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand"> <span id="animatedName" class="animated-name"></span></div>
+    <nav>
+      <a href="Homepage.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html">Contact</a>
+      <a href="experience.html">Experience</a>
+      <a href="Twoheads.html">Two Heads tech</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Certified Full-Stack Web Developer | Cybersecurity Professional | Data Analyst | POS & Custom Software Developer</h1>
+      <h2>Passionate about creating innovative digital solutions</h2>
+      <p><blockquote>"Building secure, scalable, and data-driven solutions for the modern digital world."</blockquote></p>
+    </section>
+    <section class="overview">
+        <div class="container">
+        <h1>Mission</h1>
+      To develop innovative, secure, and reliable software solutions that help businesses improve efficiency, enhance security, and achieve their goals through technology.
+        </div>
+        <br>
+    </section>
+    <section class="overview">
+        <div class="container">
+            <h2>Welcome to My Portfolio</h2>
+            <p>Hello, I'm Brian Kitavi, a Certified Full-Stack Web Developer, Cybersecurity Professional, Data Analyst, POS Developer, and Custom Software Developer.<br>
+                I specialize in building responsive web applications, custom software solutions, and Point of Sale (POS) systems that help businesses improve efficiency and achieve their goals. My expertise spans front-end and back-end development, database management, software testing, cybersecurity, and data analytics.<br>
+                With a strong foundation in modern technologies and industry best practices, I develop secure, scalable, and user-friendly digital solutions tailored to client needs. I am passionate about solving complex problems, optimizing business processes, and delivering high-quality software that creates real value.<br>
+                My goal is simple: to build innovative, secure, and reliable technology solutions that empower businesses and individuals in the digital world.</p>
+        </div>
+    </section>
+    <section class="section overview">
+        <div class="card">
+          <h2>Why work with me?</h2>
+          <ol>
+            <li>Strong Full-Stack Development Skills</li>
+            <li>Security-Focused Development Approach</li>
+            <li>Custom Software Solutions Tailored to Business Needs</li>
+            <li>Experience in Data Analysis and Reporting</li>
+            <li>Commitment to Quality and Continuous Learning</li>
+            <li>Excellent Communication and Collaboration</li>
+            <li>Reliable, Professional, and Detail-Oriented </li>
+            <li>Passion for Building Solutions that Drive Business Success</li>
+            <li>Proven Track Record of Delivering Results</li>
+          </ol>
+
+        </div>
+        </section>
+        <br>
+        <section class="section overview" >
+          <div class="card" background-color="#e2f0e9">
+            <h2>What i do!</h2>
+            <ol>
+                <li>Web Development</li>
+                <li>Custom Software Development</li>
+                <li>POS System Development</li>
+                <li>Cybersecurity & Vulnerability Assessment</li>
+                <li>Authorized Penetration Testing</li>
+                <li>Data Analysis & Visualization</li>
+                <li>Database Design & Management</li>
+                <li>Software Testing & Quality Assurance</li>
+                <li>API Development & Integration</li>
+                <li>Responsive Web Design</li>
+            </ol>
+          </div>
+        </section>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <!-- JavaScript will add image cards here -->
+    </section>
+
+    <section class="btn-panel">
+      <button type="button" data-action="About">See About</button>
+      <button type="button" data-action="skills">See My Skills</button>
+      <button type="button" data-action="experience">See My Experience</button>
+      <button type="button" data-action="education">See My Education</button>
+      <button type="button" data-action="contact">Contact me</button>
+    </section>
+  </main>
+
+  <div id="education-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="password-modal" role="dialog" aria-modal="true" aria-labelledby="password-modal-title">
+      <h2 id="password-modal-title">Unlock Education</h2>
+      <p>Enter the password to access the Education section.</p>
+      <input id="education-password-input" type="password" placeholder="Password" autocomplete="off" />
+      <p id="education-password-error" class="password-error"></p>
+      <div class="modal-buttons">
+        <button id="education-password-submit" class="unlock" type="button">Unlock</button>
+        <button id="education-password-cancel" class="cancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const images = [
+      {
+        src: 'Academic.certs/data-analytics-certificate-brian-kitavi.png',
+        alt: 'Data Analytics Certificate',
+        title: 'Data Analytics Certificate',
+        href: 'Academic.certs/data-analytics-certificate-brian-kitavi.png'
+      },
+      {
+        src: 'Academic.certs/159-cybersecurity-certificate-brian-kitavi (2).png',
+        alt: 'Cybersecurity Certificate',
+        title: 'Cybersecurity Certificate',
+        href: 'Academic.certs/159-cybersecurity-certificate-brian-kitavi (2).png'
+      },
+      {
+        src: 'Academic.certs/89-professional-foundations-certificate-brian-kitavi (1).png',
+        alt: 'Professional Foundations Certificate',
+        title: 'Professional Foundations Certificate',
+        href: 'Academic.certs/89-professional-foundations-certificate-brian-kitavi (1).png'
+      }
+
+    ];
+
+    const gallery = document.getElementById('gallery');
+    const animatedName = document.getElementById('animatedName');
+    const nameText = ' Brian Kitavi';
+    const certificatePassword = 'Brian2009';
+
+    let nameIndex = 0;
+    const nameTimer = setInterval(() => {
+      if (animatedName) {
+        animatedName.textContent = nameText.slice(0, nameIndex);
+      }
+      nameIndex += 1;
+      if (nameIndex > nameText.length) {
+        clearInterval(nameTimer);
+      }
+    }, 150);
+
+    images.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'gallery-item';
+      card.tabIndex = 0;
+
+      const icon = document.createElement('div');
+      icon.className = 'lock-icon';
+      icon.textContent = '🔒';
+
+      const title = document.createElement('span');
+      title.className = 'card-title';
+      title.textContent = item.title;
+
+      const text = document.createElement('span');
+      text.className = 'card-text';
+      text.textContent = 'Click once to enter the password and unlock this certificate.';
+
+      const form = document.createElement('div');
+      form.className = 'card-form';
+      form.hidden = true;
+
+      const input = document.createElement('input');
+      input.type = 'password';
+      input.placeholder = 'Password';
+      input.setAttribute('aria-label', 'Certificate password');
+
+      const unlockButton = document.createElement('button');
+      unlockButton.className = 'unlock-button';
+      unlockButton.type = 'button';
+      unlockButton.textContent = 'Unlock';
+
+      const cancelButton = document.createElement('button');
+      cancelButton.className = 'cancel-button';
+      cancelButton.type = 'button';
+      cancelButton.textContent = 'Cancel';
+
+      const message = document.createElement('p');
+      message.className = 'password-message';
+      message.textContent = '';
+
+      form.appendChild(input);
+      form.appendChild(unlockButton);
+      form.appendChild(cancelButton);
+      form.appendChild(message);
+
+      card.appendChild(icon);
+      card.appendChild(title);
+      card.appendChild(text);
+      card.appendChild(form);
+      gallery.appendChild(card);
+
+      const showForm = () => {
+        if (form.hidden) {
+          form.hidden = false;
+          input.focus();
+        }
+      };
+
+      const hideForm = () => {
+        form.hidden = true;
+        input.value = '';
+        message.textContent = '';
+      };
+
+      const validatePassword = () => {
+        if (input.value === certificatePassword) {
+          window.open(item.href, '_blank');
+          hideForm();
+        } else {
+          message.textContent = 'Incorrect password. Access denied.';
+          input.focus();
+        }
+      };
+
+      card.addEventListener('click', event => {
+        if (event.target === unlockButton || event.target === cancelButton || event.target === input) {
+          return;
+        }
+        showForm();
+      });
+
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          showForm();
+        }
+      });
+
+      unlockButton.addEventListener('click', validatePassword);
+      cancelButton.addEventListener('click', hideForm);
+      input.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          validatePassword();
+        }
+      });
+    });
+
+    const buttons = document.querySelectorAll('.btn-panel button');
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        const action = this.dataset.action;
+        if (action === 'About') {
+          window.location.href = 'about.html';
+        } else if (action === 'skills') {
+          window.location.href = 'skills.html';
+        } else if (action === 'experience') {
+          window.location.href = 'experience.html';
+        } else if (action === 'education') {
+          showEducationModal('education.html');
+        } else if (action === 'contact') {
+          window.location.href = 'contact.html';
+        }
+      });
+    });
+
+    document.querySelectorAll('.navbar nav a[href$="education.html"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        showEducationModal(this.href);
+      });
+    });
+
+    const EDUCATION_PASSWORD = 'Brian2009';
+    const educationModal = document.getElementById('education-modal');
+    const educationInput = document.getElementById('education-password-input');
+    const educationError = document.getElementById('education-password-error');
+    const educationSubmit = document.getElementById('education-password-submit');
+    const educationCancel = document.getElementById('education-password-cancel');
+    let educationTargetHref = 'education.html';
+
+    function showEducationModal(href = 'education.html') {
+      educationTargetHref = href;
+      educationError.textContent = '';
+      educationInput.value = '';
+      educationModal.classList.remove('hidden');
+      educationModal.setAttribute('aria-hidden', 'false');
+      educationInput.focus();
+    }
+
+    function hideEducationModal() {
+      educationModal.classList.add('hidden');
+      educationModal.setAttribute('aria-hidden', 'true');
+      educationError.textContent = '';
+      educationInput.value = '';
+    }
+
+    function validateEducationPassword() {
+      if (educationInput.value === EDUCATION_PASSWORD) {
+        window.location.href = educationTargetHref;
+      } else {
+        educationError.textContent = 'Incorrect password. Please try again.';
+        educationInput.focus();
+      }
+    }
+
+    educationSubmit.addEventListener('click', validateEducationPassword);
+    educationCancel.addEventListener('click', hideEducationModal);
+    educationInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') validateEducationPassword();
+    });
+    educationModal.addEventListener('click', function (e) {
+      if (e.target === educationModal) hideEducationModal();
+    });
+
+  </script>
+</body>
+</html>

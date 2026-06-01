@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Education Background</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f4f7fb; color: #1f2937; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; background: #0f172a; color: #fff; position: sticky; top: 0; z-index: 10; }
+    .navbar .brand { font-size: 1.2rem; font-weight: 700; }
+    .navbar nav a { color: #e2e8f0; text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
+    .navbar nav a:hover { color: #7dd3fc; }
+    .section { max-width: 1000px; margin: 48px auto; padding: 0 24px; }
+    .card { background: #fff; border-radius: 16px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); padding: 24px; }
+    .card h2 { margin-top: 0; color: #0f172a; }
+    .education-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .education-table th, .education-table td { padding: 14px; border-bottom: 1px solid #e6eef8; }
+    .education-table th { text-align: left; color: #0f172a; }
+    .education-table td { color: #475569; vertical-align: top; }
+    .education-table td strong { display: block; color: #111827; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border: none; background: #0f172a; color: #fff; padding: 12px 18px; border-radius: 999px; font-size: 0.95rem; cursor: pointer; transition: background 0.2s ease; }
+    .btn:hover { background: #1e40af; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    footer { background: #0f172a; color: #cbd5e1; padding: 24px; text-align: center; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">EDUCATION</div>
+    <nav>
+      <a href="Homepage.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html">Contact</a>
+      <a href="experience.html">Experience</a>
+      <a href="Twoheads.html">Two Heads tech</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="card">
+      <h2>Education</h2>
+      <table class="education-table">
+        <thead>
+          <tr>
+            <th>School</th>
+            <th style="width:160px;">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Laikipia University</strong><div>Degree program in Bachelor of Science in Computer Science.</div></td>
+            <td>2025 — 2029</td>
+          </tr>
+          <tr>
+            <td><strong>University of ALX</strong><div>Data Analytics Graduate: Completed coursework in data analysis, visualization, and predictive modeling with practical projects.</div></td>
+            <td>2025 — 2026</td>
+          </tr>
+          <tr>
+            <td><strong>University of ALX</strong><div>Cyber Security Graduate: Studied security principles, threat assessment, and secure system design.</div></td>
+            <td>2025 — 2026</td>
+          </tr>
+          <tr>
+            <td><strong>Machakos School</strong><div>Kenya Certificate of Secondary Education.</div></td>
+            <td>2021 — 2024</td>
+          </tr>
+          <tr>
+            <td><strong>St. Paul’s Primary School</strong><div>Kenya Certificate of Primary Education.</div></td>
+            <td>2013 — 2020</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="button-row">
+        <button class="btn" type="button" onclick="window.location.href='Homepage.html'">Home</button>
+        <button class="btn" type="button" onclick="window.location.href='skills.html'">Skills</button>
+        <button class="btn" type="button" onclick="window.location.href='experience.html'">Experience</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Portfolio</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

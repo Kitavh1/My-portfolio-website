@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Two Heads Tech Enterprise</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: #0f172a;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #7dd3fc;
+      display: grid;
+      place-items: center;
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .brand-text span {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    .navbar nav a {
+      color: #e2f0e9;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+    }
+    .navbar nav a:hover { color: #7dd3fc; }
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      text-align: left;
+    }
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: 2.8rem;
+      line-height: 1.05;
+    }
+    .hero p {
+      max-width: 760px;
+      margin: 0 0 20px;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    .hero .tagline {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+    }
+    .section {
+      margin-bottom: 32px;
+    }
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.6rem;
+      color: #0f172a;
+    }
+    .section p,
+    .section li {
+      color: #475569;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    .section ul,
+    .section ol {
+      padding-left: 20px;
+      margin: 12px 0 0;
+    }
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .highlight {
+      background: #eef2ff;
+      border-radius: 14px;
+      padding: 18px;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .highlight strong {
+      color: #0f172a;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .btn-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .btn {
+      border: none;
+      background: #0f172a;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s ease;
+    }
+    .btn:hover { background: #1e293b; }
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .feature-item {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+    .feature-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: #0f172a;
+    }
+    .feature-item p {
+      margin: 0;
+    }
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 24px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.76);
+      padding: 20px;
+      z-index: 9999;
+    }
+    .modal-overlay.hidden { display: none; }
+    .password-modal {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22);
+    }
+    .password-modal h2 { margin: 0 0 12px; font-size: 1.3rem; color: #0f172a; }
+    .password-modal p { margin: 0 0 18px; color: #475569; line-height: 1.5; }
+    .password-modal input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .password-modal .modal-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .password-modal button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .password-modal .unlock { background: #0f172a; color: #fff; }
+    .password-modal .cancel { background: #e5e7eb; color: #0f172a; }
+    .password-modal .password-error {
+      margin: 0;
+      min-height: 1.2rem;
+      color: #b91c1c;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 640px) {
+      .navbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .hero { padding-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <div class="brand-icon">2H</div>
+      <div class="brand-text">
+        <div>Two Heads Tech Enterprise</div>
+        <span>Founder, Two Heads Tech Enterprise</span>
+      </div>
+    </div>
+    <nav>
+      <a href="homepage.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="tagline">Innovating. Securing. Transforming.</p>
+      <h1>Two Heads Tech Enterprise</h1>
+      <p>Two Heads Tech Enterprise is an emerging technology enterprise led by Brian Kitavi, dedicated to delivering secure, scalable, and modern digital solutions for businesses, organizations, and individuals. Our focus is on practical software, cybersecurity, and data-driven systems that help teams grow safely and efficiently.</p>
+      <div class="btn-panel">
+        <button class="btn" type="button" data-action="contact">Talk with Brian</button>
+        <button class="btn" type="button" data-action="skills">View Skills</button>
+        <button class="btn" type="button" data-action="education">Access Education</button>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="section card">
+        <h2>What we do</h2>
+        <p>Two Heads Tech Enterprise builds digital tools and services that help organizations work smarter, protect sensitive systems, and make better decisions. Our capability areas include full-stack development, software engineering, POS systems, data analytics, and cybersecurity consulting.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <h3>Full-Stack Web Development</h3>
+            <p>Responsive web applications built with modern front-end and back-end practices to ensure strong user experiences and maintainable systems.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Custom Software Development</h3>
+            <p>Tailor-made applications designed to solve business problems, automate workflows, and improve operational efficiency.</p>
+          </div>
+          <div class="feature-item">
+            <h3>POS System Development</h3>
+            <p>Point of Sale solutions with inventory tracking, sales reporting, and a secure checkout experience for small businesses and retail operations.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Database Design & Management</h3>
+            <p>Structured data systems that keep information organized, accessible, and reliable for business applications.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Data Analytics & Visualization</h3>
+            <p>Insightful dashboards and analytics that turn data into actionable business intelligence.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Cybersecurity Consulting</h3>
+            <p>Security-first service design and vulnerability assessment to protect systems, data, and users from threats.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section card">
+        <h2>Services</h2>
+        <ul>
+          <li>Full-Stack Web Development</li>
+          <li>Custom Software Development</li>
+          <li>POS System Development</li>
+          <li>Database Design & Management</li>
+          <li>Data Analytics & Visualization</li>
+          <li>Software Testing & Quality Assurance</li>
+          <li>Cybersecurity Consulting</li>
+          <li>Vulnerability Assessment</li>
+          <li>Authorized Penetration Testing</li>
+          <li>API Development & Integration</li>
+          <li>Technical Support & System Maintenance</li>
+        </ul>
+      </div>
+
+      <div class="section card">
+        <h2>Vision & Mission</h2>
+        <div class="highlight-grid">
+          <div class="highlight">
+            <strong>Vision</strong>
+            <p>To become a trusted technology partner that empowers businesses through innovative software solutions, cybersecurity services, and data-driven decision-making.</p>
+          </div>
+          <div class="highlight">
+            <strong>Mission</strong>
+            <p>To deliver high-quality, secure, and scalable technology solutions that help organizations improve efficiency, enhance security, and achieve sustainable growth.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section card">
+        <h2>Why choose Two Heads Tech?</h2>
+        <div class="highlight-grid">
+          <div class="highlight">
+            <strong>Client-focused solutions</strong>
+            <p>Every project is shaped around your goals, timelines, and business priorities.</p>
+          </div>
+          <div class="highlight">
+            <strong>Security-first approach</strong>
+            <p>We design systems with strong security, testing, and risk management built in from the start.</p>
+          </div>
+          <div class="highlight">
+            <strong>Modern technologies</strong>
+            <p>We leverage current tools and best practices to build reliable and maintainable systems.</p>
+          </div>
+          <div class="highlight">
+            <strong>Reliable support</strong>
+            <p>Post-launch support and ongoing maintenance keep your solutions stable and up to date.</p>
+          </div>
+          <div class="highlight">
+            <strong>Professional development</strong>
+            <p>Clear development processes ensure high-quality results and consistent delivery.</p>
+          </div>
+          <div class="highlight">
+            <strong>Commitment to innovation</strong>
+            <p>We adapt and improve with every project to help you stay competitive.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section card">
+        <h2>Project ideas and portfolio</h2>
+        <p>Two Heads Tech Enterprise is built around practical projects such as portfolio websites, POS systems, management dashboards, analytics tools, and secure service integrations. These projects demonstrate how the brand applies technical expertise to real business needs.</p>
+      </div>
+
+      <div class="button-row">
+        <button class="btn" type="button" data-action="contact">Contact</button>
+        <button class="btn" type="button" data-action="skills">Skills</button>
+        <button class="btn" type="button" data-action="experience">Experience</button>
+        <button class="btn" type="button" data-action="education">Education</button>
+        <button class="btn" type="button" data-action="homepage">Home</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="education-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="password-modal" role="dialog" aria-modal="true" aria-labelledby="password-modal-title">
+      <h2 id="password-modal-title">Unlock Education</h2>
+      <p>Enter the password to access the Education section.</p>
+      <input id="education-password-input" type="password" placeholder="Password" autocomplete="off" />
+      <p id="education-password-error" class="password-error"></p>
+      <div class="modal-buttons">
+        <button id="education-password-submit" class="unlock" type="button">Unlock</button>
+        <button id="education-password-cancel" class="cancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Two Heads Tech Enterprise · Founder: Brian Kitavi · © <span id="year"></span></p>
+  </footer>
+
+  <script>
+    const EDUCATION_PASSWORD = 'Brian2009';
+    const educationModal = document.getElementById('education-modal');
+    const educationInput = document.getElementById('education-password-input');
+    const educationError = document.getElementById('education-password-error');
+    const educationSubmit = document.getElementById('education-password-submit');
+    const educationCancel = document.getElementById('education-password-cancel');
+    let educationTargetHref = 'education.html';
+
+    function showEducationModal(href = 'education.html') {
+      educationTargetHref = href;
+      educationError.textContent = '';
+      educationInput.value = '';
+      educationModal.classList.remove('hidden');
+      educationModal.setAttribute('aria-hidden', 'false');
+      educationInput.focus();
+    }
+
+    function hideEducationModal() {
+      educationModal.classList.add('hidden');
+      educationModal.setAttribute('aria-hidden', 'true');
+      educationError.textContent = '';
+      educationInput.value = '';
+    }
+
+    function validateEducationPassword() {
+      if (educationInput.value === EDUCATION_PASSWORD) {
+        window.location.href = educationTargetHref;
+      } else {
+        educationError.textContent = 'Incorrect password. Please try again.';
+      }
+    }
+
+    document.querySelectorAll('[data-action]').forEach(button => {
+      button.addEventListener('click', function () {
+        const action = this.dataset.action;
+        if (action === 'contact') window.location.href = 'contact.html';
+        if (action === 'skills') window.location.href = 'skills.html';
+        if (action === 'experience') window.location.href = 'experience.html';
+        if (action === 'education') showEducationModal('education.html');
+        if (action === 'homepage') window.location.href = 'homepage.html';
+      });
+    });
+
+    document.querySelectorAll('.navbar nav a[href$="education.html"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        showEducationModal(this.href);
+      });
+    });
+
+    educationSubmit.addEventListener('click', validateEducationPassword);
+    educationCancel.addEventListener('click', hideEducationModal);
+    educationInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') validateEducationPassword();
+    });
+    educationModal.addEventListener('click', function (e) {
+      if (e.target === educationModal) hideEducationModal();
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

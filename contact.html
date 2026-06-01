@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f4f7fb; color: #1f2937; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; background: #0f172a; color: #fff; position: sticky; top: 0; z-index: 10; }
+    .navbar .brand { font-size: 1.2rem; font-weight: 700; }
+    .navbar nav a { color: #e2e8f0; text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
+    .navbar nav a:hover { color: #7dd3fc; }
+    .section { max-width: 900px; margin: 48px auto; padding: 0 24px; }
+    .card { background: #fff; border-radius: 16px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); padding: 24px; }
+    .card h2 { margin-top: 0; color: #0f172a; }
+    .contact-list { list-style: none; padding: 0; margin: 0; }
+    .contact-list li { margin-bottom: 14px; color: #475569; }
+    .contact-list a { color: #0f172a; text-decoration: none; }
+    .contact-list a:hover { text-decoration: underline; }
+    footer { background: #0f172a; color: #cbd5e1; padding: 24px; text-align: center; font-size: 0.95rem; }
+    .modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.76); padding: 20px; z-index: 9999; }
+    .modal-overlay.hidden { display: none; }
+    .password-modal { width: 100%; max-width: 420px; background: #fff; border-radius: 18px; padding: 24px; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22); }
+    .password-modal h2 { margin: 0 0 12px; font-size: 1.3rem; color: #0f172a; }
+    .password-modal p { margin: 0 0 18px; color: #475569; line-height: 1.5; }
+    .password-modal input { width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 1rem; margin-bottom: 12px; box-sizing: border-box; }
+    .password-modal .modal-buttons { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+    .password-modal button { border: none; padding: 12px 16px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 0.95rem; }
+    .password-modal .unlock { background: #0f172a; color: #fff; }
+    .password-modal .cancel { background: #e5e7eb; color: #0f172a; }
+    .password-modal .password-error { margin: 0; min-height: 1.2rem; color: #b91c1c; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">CONTACT</div>
+    <nav>
+      <a href="homepage.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html">Contact</a>
+      <a href="experience.html">Experience</a>
+      <a href="Twoheads.html">Two heads tech</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="card">
+        <h2>Contact</h2>
+        <p>If you have any questions or would like to get in touch, feel free to reach out using the information below:</p>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:brian@example.com">bmumo06@gmail.com</a></li>
+          <li>Phone: <a href="tel:+254700000000">+254 10 655 2292</a></li>
+          <li>WhatsApp: <a href="https://wa.me/254106552292" target="_blank" rel="noreferrer">+254 106552292</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">linkedin.com/in/yourprofile</a></li>
+          <li>Fiverr: <a href="https://www.fiverr.com" target="_blank" rel="noreferrer">fiverr.com/seller/yourprofile</a></li>
+          <li>GitHub: <a href="https://github.com" target="_blank" rel="noreferrer">github.com/yourprofile</a></li>
+          <li>Instagram: <a href="https://www.instagram.com" target="_blank" rel="noreferrer">instagram.com/yourprofile</a></li>
+          <li>Location: Nairobi, Kenya</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div id="education-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="password-modal" role="dialog" aria-modal="true" aria-labelledby="password-modal-title">
+      <h2 id="password-modal-title">Unlock Education</h2>
+      <p>Enter the password to access the Education section.</p>
+      <input id="education-password-input" type="password" placeholder="Password" autocomplete="off" />
+      <p id="education-password-error" class="password-error"></p>
+      <div class="modal-buttons">
+        <button id="education-password-submit" class="unlock" type="button">Unlock</button>
+        <button id="education-password-cancel" class="cancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> Portfolio</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const EDUCATION_PASSWORD = 'Brian2009';
+    const educationModal = document.getElementById('education-modal');
+    const educationInput = document.getElementById('education-password-input');
+    const educationError = document.getElementById('education-password-error');
+    const educationSubmit = document.getElementById('education-password-submit');
+    const educationCancel = document.getElementById('education-password-cancel');
+    let educationTargetHref = 'education.html';
+
+    function showEducationModal(href = 'education.html') {
+      educationTargetHref = href;
+      educationError.textContent = '';
+      educationInput.value = '';
+      educationModal.classList.remove('hidden');
+      educationModal.setAttribute('aria-hidden', 'false');
+      educationInput.focus();
+    }
+
+    function hideEducationModal() {
+      educationModal.classList.add('hidden');
+      educationModal.setAttribute('aria-hidden', 'true');
+      educationError.textContent = '';
+      educationInput.value = '';
+    }
+
+    function validateEducationPassword() {
+      if (educationInput.value === EDUCATION_PASSWORD) {
+        window.location.href = educationTargetHref;
+      } else {
+        educationError.textContent = 'Incorrect password. Please try again.';
+      }
+    }
+
+    document.querySelectorAll('.navbar nav a[href$="education.html"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        showEducationModal(this.href);
+      });
+    });
+
+    educationSubmit.addEventListener('click', validateEducationPassword);
+    educationCancel.addEventListener('click', hideEducationModal);
+    educationInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') validateEducationPassword();
+    });
+    educationModal.addEventListener('click', function (e) {
+      if (e.target === educationModal) hideEducationModal();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><strong>Brian Kitavi's Skills</strong></title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f4f7fb; color: #1f2937; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; background: #0f172a; color: #fff; position: sticky; top: 0; z-index: 10; }
+    .navbar .brand { font-size: 1.2rem; font-weight: 700; }
+    .navbar nav a { color: #e2e8f0; text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
+    .navbar nav a:hover { color: #7dd3fc; }
+    .section { max-width: 1000px; margin: 48px auto; padding: 0 24px; }
+    .card.text{text-emphasis-color: #193c90;}
+    .card { background: hwb(38 87% 9%); border-radius: 16px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); padding: 24px; margin-bottom: 18px; }
+    .card h2 { margin-top: 0; color: #0f172a; }
+    .skill-list { display: grid; gap: 18px; list-style: none; padding: 0; margin: 0; }
+    .skill-list li { color: #475569; }
+    footer { background: #0f172a; color: #cbd5e1; padding: 24px; text-align: center; font-size: 0.95rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: #0f2a20;
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 18px;
+    }
+
+    /* Education password modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.76);
+      padding: 20px;
+      z-index: 9999;
+    }
+    .modal-overlay.hidden { display: none; }
+    .password-modal {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22);
+    }
+    .password-modal h2 { margin: 0 0 12px; font-size: 1.3rem; color: #0f172a; }
+    .password-modal p { margin: 0 0 18px; color: #475569; line-height: 1.5; }
+    .password-modal input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .password-modal .modal-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .password-modal button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .password-modal .unlock {
+      background: #0f172a;
+      color: #fff;
+    }
+    .password-modal .cancel {
+      background: #e5e7eb;
+      color: #0f172a;
+    }
+    .password-modal .password-error {
+      margin: 0;
+      min-height: 1.2rem;
+      color: #b91c1c;
+      font-size: 0.95rem;
+    }
+  </style>
+
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">MY SKILLS</div>
+    <nav>
+      <a href="homepage.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html">Contact</a>
+      <a href="experience.html">Experience</a>
+      <a href="Twoheads.html">Two Heads tech</a>    
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="card">
+        <h2>Development</h2>
+        <ol class="skill-list">
+          <li>HTML, CSS, JavaScript</li>
+          <li>React, Node.js, REST APIs</li>
+          <li>SQL, NoSQL, database design</li>
+          <li>Responsive and accessible web design</li>
+          <li>Version control with Git and GitHub</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h2>Analytics</h2>
+        <ol class="skill-list">
+          <li>Data visualization and storytelling</li>
+          <li>Python for analysis and automation</li>
+          <li>Power BI, Excel, dashboard creation</li>
+          <li>Statistical and predictive modeling</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h2>Security</h2>
+        <ol class="skill-list">
+          <li>Security fundamentals and risk assessment</li>
+          <li>Secure coding best practices</li>
+          <li>Network security awareness</li>
+          <li>Threat analysis and secure system design</li>
+        </ol>
+      </div>
+    </section>
+
+    <button class="btn" type="button" data-action="contact">Contact me</button>
+        <button class="btn" type="button" data-action="homepage">Back to Home</button>
+        <button class="btn" type="button" data-action="My skills">See My Skills</button>
+        <button class="btn" type="button" data-action="experience">See My Experience</button>
+        <button class="btn" type="button" data-action="education">See My Education</button>
+  </main>
+
+  <div id="education-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="password-modal" role="dialog" aria-modal="true" aria-labelledby="password-modal-title">
+      <h2 id="password-modal-title">Unlock Education</h2>
+      <p>Enter the password to access the Education section.</p>
+      <input id="education-password-input" type="password" placeholder="Password" autocomplete="off" />
+      <p id="education-password-error" class="password-error"></p>
+      <div class="modal-buttons">
+        <button id="education-password-submit" class="unlock" type="button">Unlock</button>
+        <button id="education-password-cancel" class="cancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> Portfolio</p>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        const action = this.dataset.action;
+        if (action === 'contact') {
+          window.location.href = 'contact.html';
+        } else if (action === 'homepage') {
+          window.location.href = 'homepage.html';
+        } else if (action === 'My skills') {
+          window.location.href = 'skills.html';
+        } else if (action === 'experience') {
+          window.location.href = 'experience.html';
+        } else if (action === 'education') {
+          showEducationModal('education.html');
+        }
+      });
+    });
+
+    // Also intercept navbar Education link
+    document.querySelectorAll('.navbar nav a[href$="education.html"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        showEducationModal(this.href);
+      });
+    });
+  </script>
+</body>
+</html>

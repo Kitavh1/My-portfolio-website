@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: #0f172a;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .navbar nav a {
+      color: #e2f0e9;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+    }
+    .navbar nav a:hover { color: #7dd3fc; }
+    .section { max-width: 900px; margin: 48px auto; padding: 0 24px; }
+    .card { background:#fff; border-radius:12px; padding:24px; box-shadow:0 8px 20px rgba(0,0,0,0.06);} 
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: #0f172a;
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 18px;
+    }
+    .btn:hover { background: #1e40af; }
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    footer { background:#0f172a; color:#cbd5e1; padding:24px; text-align:center; font-size:0.95rem; }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.76);
+      padding: 20px;
+      z-index: 9999;
+    }
+    .modal-overlay.hidden { display: none; }
+    .password-modal {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22);
+    }
+    .password-modal h2 { margin: 0 0 12px; font-size: 1.3rem; color: #0f172a; }
+    .password-modal p { margin: 0 0 18px; color: #475569; line-height: 1.5; }
+    .password-modal input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .password-modal .modal-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .password-modal button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .password-modal .unlock {
+      background: #0f172a;
+      color: #fff;
+    }
+    .password-modal .cancel {
+      background: #e5e7eb;
+      color: #0f172a;
+    }
+    .password-modal .password-error {
+      margin: 0;
+      min-height: 1.2rem;
+      color: #b91c1c;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">About</div>
+    <nav>
+      <a href="homepage.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html">Contact</a>
+      <a href="experience.html">Experience</a>
+      <a href="Twoheads.html">Two heads tech</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="card">
+        <h1>About Me</h1>
+        <h2>Who am I?</h2>
+        <p>Hello! I'm Brian Kitavi, a Certified Full-Stack Web Developer, Cybersecurity Professional, Data Analyst, POS Developer, and Custom Software Developer dedicated to building innovative, secure, and efficient digital solutions. I specialize in developing modern web applications, business management systems, Point of Sale (POS) systems, and custom software tailored to meet unique business requirements.<br>My passion for technology drives me to create solutions that are not only functional and scalable but also secure and user-friendly. With a strong background in software development, cybersecurity, data analytics, and software testing, I combine technical expertise with problem-solving skills to deliver reliable solutions that help organizations improve productivity, enhance security, and make data-driven decisions.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="card">
+        <h1>My professional journey</h1>
+        <p>My journey in technology began with a passion for understanding how software works and how it can be used to solve real-world problems. Over time, I expanded my skills across multiple disciplines, including:</p>
+        <ol>
+          <li>Full-Stack Web Development</li>
+          <li>Cybersecurity & Vulnerability Assessment</li>
+          <li>Data Analytics & Visualization</li>
+          <li>Database Design & Management</li>
+          <li>Custom Software Development</li>
+          <li>POS System Development</li>
+          <li>Software Testing & Quality Assurance</li>
+          <li>API Development & System Integration</li>
+        </ol>
+        <p>Today, I continue to learn and adapt to emerging technologies while applying industry best practices in security, performance, and software development.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="card">
+        <h1>What I Do</h1>
+        <ol>
+          <li><strong>Full-Stack Web Development</strong>: Designing and developing responsive, modern, and scalable web applications using front-end and back-end technologies.</li>
+          <li><strong>Cybersecurity & Penetration Testing</strong>: Conducting authorized security assessments, vulnerability analysis, and security testing to identify and mitigate risks.</li>
+          <li><strong>Data Analytics & Visualization</strong>: Transforming raw data into meaningful insights through analysis, visualization, and reporting.</li>
+          <li><strong>Database Design & Management</strong>: Designing and maintaining efficient database systems for data storage and retrieval.</li>
+          <li><strong>Custom Software Development</strong>: Creating tailor-made software solutions that streamline business operations and improve efficiency.</li>
+          <li><strong>POS System Development</strong>: Building efficient Point of Sale systems with inventory management, sales tracking, reporting, and user management features.</li>
+          <li><strong>Software Testing & Quality Assurance</strong>: Ensuring software quality through testing, debugging, performance evaluation, and quality assurance practices.</li>
+          <li><strong>API Development & System Integration</strong>: Creating and integrating APIs to enable seamless communication between different software systems.</li>
+        </ol>
+      </div>
+    </section>
+    <div class="button-row">
+      <button class="btn" type="button" data-action="contact">Contact me</button>
+      <button class="btn" type="button" data-action="homepage">Back to Home</button>
+      <button class="btn" type="button" data-action="skills">See My Skills</button>
+      <button class="btn" type="button" data-action="experience">See My Experience</button>
+      <button class="btn" type="button" data-action="education">See My Education</button>
+    </div>
+  </main>
+
+  <div id="education-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="password-modal" role="dialog" aria-modal="true" aria-labelledby="password-modal-title">
+      <h2 id="password-modal-title">Unlock Education</h2>
+      <p>Enter the password to access the Education section.</p>
+      <input id="education-password-input" type="password" placeholder="Password" autocomplete="off" />
+      <p id="education-password-error" class="password-error"></p>
+      <div class="modal-buttons">
+        <button id="education-password-submit" class="unlock" type="button">Unlock</button>
+        <button id="education-password-cancel" class="cancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Contact for project opportunities and collaborations. © <span id="year"></span></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const EDUCATION_PASSWORD = 'Brian2009';
+    const educationModal = document.getElementById('education-modal');
+    const educationInput = document.getElementById('education-password-input');
+    const educationError = document.getElementById('education-password-error');
+    const educationSubmit = document.getElementById('education-password-submit');
+    const educationCancel = document.getElementById('education-password-cancel');
+    let educationTargetHref = 'education.html';
+
+    function showEducationModal(href = 'education.html') {
+      educationTargetHref = href;
+      educationError.textContent = '';
+      educationInput.value = '';
+      educationModal.classList.remove('hidden');
+      educationModal.setAttribute('aria-hidden', 'false');
+      educationInput.focus();
+    }
+
+    function hideEducationModal() {
+      educationModal.classList.add('hidden');
+      educationModal.setAttribute('aria-hidden', 'true');
+      educationError.textContent = '';
+      educationInput.value = '';
+    }
+
+    function validateEducationPassword() {
+      if (educationInput.value === EDUCATION_PASSWORD) {
+        window.location.href = educationTargetHref;
+      } else {
+        educationError.textContent = 'Incorrect password. Please try again.';
+      }
+    }
+
+    document.querySelectorAll('button[data-action]').forEach(button => {
+      button.addEventListener('click', function () {
+        const action = this.dataset.action;
+        if (action === 'contact') {
+          window.location.href = 'contact.html';
+        } else if (action === 'homepage') {
+          window.location.href = 'homepage.html';
+        } else if (action === 'skills') {
+          window.location.href = 'skills.html';
+        } else if (action === 'experience') {
+          window.location.href = 'experience.html';
+        } else if (action === 'education') {
+          showEducationModal('education.html');
+        }
+      });
+    });
+
+    document.querySelectorAll('.navbar nav a[href$="education.html"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        showEducationModal(this.href);
+      });
+    });
+
+    educationSubmit.addEventListener('click', validateEducationPassword);
+    educationCancel.addEventListener('click', hideEducationModal);
+    educationInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') validateEducationPassword();
+    });
+    educationModal.addEventListener('click', function (e) {
+      if (e.target === educationModal) hideEducationModal();
+    });
+  </script>
+</body>
+</html>
