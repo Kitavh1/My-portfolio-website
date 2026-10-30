@@ -235,7 +235,19 @@ footer:not(.projects-footer):not(.experience-footer) {
   backdrop-filter: blur(6px);
 }
 
+.modal-overlay:not(.hidden) {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
 .password-modal {
+  width: min(100%, 420px);
+  padding: 24px;
   border: 1px solid var(--portfolio-border);
   border-radius: 18px;
   background: #111b2d;
@@ -252,15 +264,66 @@ footer:not(.projects-footer):not(.experience-footer) {
 }
 
 .password-modal input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px 14px;
   border-color: var(--portfolio-border);
+  border-radius: 10px;
   background: #0b1220;
   color: var(--portfolio-text);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.password-modal .modal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.password-modal button {
+  min-height: 44px;
+  padding: 11px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 750;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.password-modal button:hover {
+  transform: translateY(-1px);
+}
+
+.password-modal .unlock {
+  background: linear-gradient(110deg, #67e8f9, #a5b4fc);
+  color: #0b1220;
 }
 
 .password-modal .cancel {
   border-color: var(--portfolio-border);
   background: #1e293b;
   color: #e2e8f0;
+}
+
+@media (max-width: 640px) {
+  .modal-overlay:not(.hidden) {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .password-modal {
+    margin-block: auto;
+    padding: 20px;
+  }
+
+  .password-modal .modal-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 :is(a, button, input):focus-visible {

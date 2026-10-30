@@ -157,7 +157,15 @@ const dialog = document.getElementById('project-dialog');
 const dialogVisual = document.getElementById('dialog-visual');
 const dialogContent = document.getElementById('dialog-content');
 const dialogClose = dialog.querySelector('.dialog-close');
+const educationModal = document.getElementById('education-modal');
+const educationInput = document.getElementById('education-password-input');
+const educationError = document.getElementById('education-password-error');
+const educationSubmit = document.getElementById('education-password-submit');
+const educationCancel = document.getElementById('education-password-cancel');
+const educationPassword = 'Brian2009';
 let lastFocusedElement = null;
+let educationTargetHref = 'education.html';
+let educationOpener = null;
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, character => ({
@@ -303,3 +311,53 @@ dialog.addEventListener('close', () => {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 renderProjects();
+
+function showEducationModal(href, opener) {
+  educationTargetHref = href;
+  educationOpener = opener;
+  educationError.textContent = '';
+  educationInput.value = '';
+  educationModal.classList.remove('hidden');
+  educationModal.setAttribute('aria-hidden', 'false');
+  educationInput.focus();
+}
+
+function hideEducationModal() {
+  educationModal.classList.add('hidden');
+  educationModal.setAttribute('aria-hidden', 'true');
+  educationError.textContent = '';
+  educationInput.value = '';
+  educationOpener?.focus();
+}
+
+function validateEducationPassword() {
+  if (educationInput.value === educationPassword) {
+    window.location.href = educationTargetHref;
+    return;
+  }
+
+  educationError.textContent = 'Incorrect password. Please try again.';
+  educationInput.focus();
+  educationInput.select();
+}
+
+document.querySelectorAll('.navbar nav a[href$="education.html"]').forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    showEducationModal(link.href, link);
+  });
+});
+
+educationSubmit.addEventListener('click', validateEducationPassword);
+educationCancel.addEventListener('click', hideEducationModal);
+educationInput.addEventListener('keydown', event => {
+  if (event.key === 'Enter') validateEducationPassword();
+});
+educationModal.addEventListener('click', event => {
+  if (event.target === educationModal) hideEducationModal();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !educationModal.classList.contains('hidden')) {
+    hideEducationModal();
+  }
+});

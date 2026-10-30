@@ -97,6 +97,19 @@
     </section>
   </main>
 
+  <div id="education-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="password-modal" role="dialog" aria-modal="true" aria-labelledby="education-password-title">
+      <h2 id="education-password-title">Unlock Education</h2>
+      <p>Enter the password to access the Education section.</p>
+      <input id="education-password-input" type="password" placeholder="Password" autocomplete="off" />
+      <p id="education-password-error" class="password-error" aria-live="polite"></p>
+      <div class="modal-buttons">
+        <button id="education-password-submit" class="unlock" type="button">Unlock</button>
+        <button id="education-password-cancel" class="cancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <footer class="projects-footer">
     <div class="footer-main">
       <a class="footer-brand" href="index.html">Brian Kitavi Mumo<span>Developer Â· Builder Â· Problem solver</span></a>
