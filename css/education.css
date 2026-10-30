@@ -1,0 +1,18 @@
+body { margin: 0; font-family: Arial, sans-serif; background: #f4f7fb; color: #1f2937; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; background: #0f172a; color: #fff; position: sticky; top: 0; z-index: 10; }
+    .navbar .brand { font-size: 1.2rem; font-weight: 700; }
+    .navbar nav a { color: #e2e8f0; text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
+    .navbar nav a:hover { color: #7dd3fc; }
+    .section { max-width: 1000px; margin: 48px auto; padding: 0 24px; }
+    .card { background: #fff; border-radius: 16px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); padding: 24px; }
+    .card h2 { margin-top: 0; color: #0f172a; }
+    .education-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .education-duration { width: 160px; }
+    .education-table th, .education-table td { padding: 14px; border-bottom: 1px solid #e6eef8; }
+    .education-table th { text-align: left; color: #0f172a; }
+    .education-table td { color: #475569; vertical-align: top; }
+    .education-table td strong { display: block; color: #111827; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border: none; background: #0f172a; color: #fff; padding: 12px 18px; border-radius: 999px; font-size: 0.95rem; cursor: pointer; transition: background 0.2s ease; }
+    .btn:hover { background: #1e40af; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    footer { background: #0f172a; color: #cbd5e1; padding: 24px; text-align: center; font-size: 0.95rem; }

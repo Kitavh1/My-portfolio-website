@@ -1,0 +1,250 @@
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: #0f172a;
+      color: #fff;
+    }
+    .navbar .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .animated-name {
+      color: #7dd3fc;
+      position: relative;
+      display: inline-block;
+    }
+    .animated-name::after {
+      content: '|';
+      display: inline-block;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    .navbar nav a {
+      color: #e2f0e9;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 0.95rem;
+    }
+    .navbar nav a:hover {
+      color: #7dd3fc;
+    }
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      margin: 0 0 16px;
+      line-height: 1.1;
+    }
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      color: #475569;
+      line-height: 1.7;
+    }
+    .overview {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 24px;
+    }
+    .overview h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: #0f172a;
+    }
+    .overview p {
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .gallery {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      padding: 24px 16px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+    .gallery-item .lock-icon {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+    .gallery-item .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .gallery-item .card-text {
+      margin-top: 8px;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+    .card-form {
+      width: 100%;
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+    }
+    .card-form input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .card-form button {
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .card-form .unlock-button {
+      background: #0f172a;
+      color: #fff;
+    }
+    .card-form .cancel-button {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .card-form .password-message {
+      margin: 0;
+      color: #b91c1c;
+      min-height: 1.2rem;
+      font-size: 0.95rem;
+    }
+    .card-form a {
+      display: none;
+    }
+    .btn-panel {
+      max-width: 1100px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-panel button {
+      padding: 10px 20px;
+      background: #0f172a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.25s ease;
+    }
+    .btn-panel button:hover {
+      background: #1e293b;
+    }
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 24px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* Education password modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.76);
+      padding: 20px;
+      z-index: 9999;
+    }
+    .modal-overlay.hidden { display: none; }
+    .password-modal {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22);
+    }
+    .password-modal h2 { margin: 0 0 12px; font-size: 1.3rem; color: #0f172a; }
+    .password-modal p { margin: 0 0 18px; color: #475569; line-height: 1.5; }
+    .password-modal input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .password-modal .modal-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .password-modal button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .password-modal .unlock {
+      background: #0f172a;
+      color: #fff;
+    }
+    .password-modal .cancel {
+      background: #e5e7eb;
+      color: #0f172a;
+    }
+    .password-modal .password-error {
+      margin: 0;
+      min-height: 1.2rem;
+      color: #b91c1c;
+      font-size: 0.95rem;
+    }
